@@ -29,7 +29,7 @@ git init
 git add .
 git commit -m "Initial portfolio site"
 git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/stephenhuber.github.io.git
+git remote add origin https://github.com/hube268/stephenhuber.github.io.git
 git push -u origin main
 ```
 
@@ -42,7 +42,7 @@ git push -u origin main
 3. Under **Source**, select **Deploy from a branch**
 4. Branch: `main` / folder: `/ (root)` → click **Save**
 5. GitHub will build and publish the site (takes ~1–2 minutes)
-6. A temporary URL like `https://YOUR_USERNAME.github.io` will appear
+6. A temporary URL like `https://hube268.github.io` will appear
 
 ---
 
@@ -63,7 +63,7 @@ Log in to wherever you purchased `stephenhuber.com` (GoDaddy, Namecheap, Cloudfl
 
 | Type  | Host/Name | Value                      | TTL  |
 |-------|-----------|----------------------------|------|
-| CNAME | `www`     | `YOUR_USERNAME.github.io.` | 3600 |
+| CNAME | `www`     | `hube268.github.io.`       | 3600 |
 | A     | `@`       | `185.199.108.153`          | 3600 |
 | A     | `@`       | `185.199.109.153`          | 3600 |
 | A     | `@`       | `185.199.110.153`          | 3600 |
