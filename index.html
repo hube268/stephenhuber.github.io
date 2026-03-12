@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stephen Huber | STEM Innovation Leader</title>
+  <meta name="description" content="Stephen Huber — STEM Education Leader, Director of Innovation, and Program Architect specializing in space, ocean, and robotics programs for K–12 schools." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #1a1a2e;
+      background: #ffffff;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ── Color Tokens ── */
+    :root {
+      --navy:   #0d1b3e;
+      --blue:   #1a4480;
+      --accent: #2563eb;
+      --teal:   #0891b2;
+      --gold:   #d97706;
+      --light:  #f0f4ff;
+      --muted:  #64748b;
+      --border: #e2e8f0;
+      --white:  #ffffff;
+    }
+
+    /* ── Utility ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 640px;
+      margin-bottom: 3rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(37,99,235,0.35); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.6);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: var(--white); }
+    .btn-dark {
+      background: transparent;
+      color: var(--navy);
+      border: 2px solid var(--border);
+    }
+    .btn-dark:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── NAV ── */
+    #navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1.1rem 0;
+      transition: all 0.3s ease;
+    }
+    #navbar.scrolled {
+      background: var(--navy);
+      padding: 0.75rem 0;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--teal); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--accent);
+      color: var(--white) !important;
+      padding: 0.4rem 1.1rem;
+      border-radius: 5px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: #1d4ed8; }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, #142755 55%, #0c3547 100%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-glow {
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(8,145,178,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(8,145,178,0.2);
+      border: 1px solid rgba(8,145,178,0.4);
+      color: #67e8f9;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+    .hero-title .highlight { color: #67e8f9; }
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2rem;
+      max-width: 580px;
+      line-height: 1.6;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 2rem;
+    }
+    .hero-stat-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .hero-stat-num span { color: #67e8f9; }
+    .hero-stat-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 500;
+      margin-top: 0.2rem;
+    }
+
+    /* ── ABOUT ── */
+    #about { padding: 6rem 0; background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-image-wrap {
+      position: relative;
+    }
+    .about-image-placeholder {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      color: rgba(255,255,255,0.15);
+      overflow: hidden;
+    }
+    .about-image-placeholder svg {
+      width: 120px;
+      height: 120px;
+      fill: rgba(255,255,255,0.15);
+    }
+    .about-badge-card {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .about-badge-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--gold), #f59e0b);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+    .about-badge-text strong { display: block; font-size: 0.85rem; font-weight: 700; color: var(--navy); }
+    .about-badge-text span { font-size: 0.75rem; color: var(--muted); }
+    .about-text p { color: #475569; margin-bottom: 1.25rem; }
+    .about-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+    .pill {
+      background: var(--light);
+      color: var(--blue);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      border: 1px solid rgba(37,99,235,0.15);
+    }
+
+    /* ── RESUME ── */
+    #resume { padding: 6rem 0; background: var(--light); }
+    .resume-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .resume-sidebar {}
+    .resume-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .resume-card h3 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .skills-list { list-style: none; }
+    .skills-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      color: #475569;
+      padding: 0.35rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .skills-list li:last-child { border-bottom: none; }
+    .skills-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .edu-item { margin-bottom: 1rem; }
+    .edu-item:last-child { margin-bottom: 0; }
+    .edu-degree { font-weight: 600; font-size: 0.88rem; color: var(--navy); }
+    .edu-school { font-size: 0.82rem; color: var(--accent); font-style: italic; }
+    .edu-year { font-size: 0.78rem; color: var(--muted); margin-top: 0.15rem; }
+    .award-item {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+    .award-item:last-child { margin-bottom: 0; }
+    .award-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .award-text { font-size: 0.85rem; color: #475569; }
+    .award-text strong { color: var(--navy); font-weight: 600; }
+
+    /* Timeline */
+    .timeline { position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .tl-item {
+      position: relative;
+      padding-left: 2rem;
+      padding-bottom: 2.5rem;
+    }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot {
+      position: absolute;
+      left: -5px;
+      top: 4px;
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border: 2px solid var(--white);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+    }
+    .tl-item.current .tl-dot { background: var(--teal); box-shadow: 0 0 0 3px rgba(8,145,178,0.25); }
+    .tl-date {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+    .tl-item.current .tl-date { color: var(--teal); }
+    .tl-title { font-weight: 700; font-size: 1rem; color: var(--navy); line-height: 1.3; }
+    .tl-org { font-size: 0.85rem; color: var(--accent); font-weight: 500; margin-bottom: 0.6rem; }
+    .tl-bullets { list-style: none; padding-left: 0; }
+    .tl-bullets li {
+      font-size: 0.875rem;
+      color: #475569;
+      padding: 0.2rem 0 0.2rem 1.1rem;
+      position: relative;
+    }
+    .tl-bullets li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* ── PORTFOLIO ── */
+    #portfolio { padding: 6rem 0; background: var(--white); }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.75rem;
+    }
+    .portfolio-card {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--white);
+      transition: all 0.3s ease;
+    }
+    .portfolio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+      border-color: rgba(37,99,235,0.2);
+    }
+    .portfolio-thumb {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      position: relative;
+    }
+    .portfolio-thumb-space  { background: linear-gradient(135deg, #0d1b3e 0%, #1e3a5f 100%); }
+    .portfolio-thumb-ocean  { background: linear-gradient(135deg, #0c3547 0%, #0891b2 100%); }
+    .portfolio-thumb-robot  { background: linear-gradient(135deg, #1a1a2e 0%, #2563eb 100%); }
+    .portfolio-thumb-xprize { background: linear-gradient(135deg, #78350f 0%, #d97706 100%); }
+    .portfolio-thumb-makerspace { background: linear-gradient(135deg, #14532d 0%, #16a34a 100%); }
+    .portfolio-thumb-iot    { background: linear-gradient(135deg, #312e81 0%, #7c3aed 100%); }
+    .portfolio-body { padding: 1.5rem; }
+    .portfolio-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .portfolio-body h3 {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .portfolio-body p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .portfolio-meta {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .portfolio-chip {
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: var(--light);
+      color: var(--blue);
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+    }
+
+    /* ── SERVICES ── */
+    #services { padding: 6rem 0; background: var(--navy); }
+    #services .section-title { color: var(--white); }
+    #services .section-subtitle { color: rgba(255,255,255,0.6); }
+    #services .section-label { color: var(--teal); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .service-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+    .service-card:hover {
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(8,145,178,0.4);
+      transform: translateY(-3px);
+    }
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .si-blue   { background: rgba(37,99,235,0.25); }
+    .si-teal   { background: rgba(8,145,178,0.25); }
+    .si-gold   { background: rgba(217,119,6,0.25); }
+    .si-green  { background: rgba(22,163,74,0.25); }
+    .si-purple { background: rgba(124,58,237,0.25); }
+    .si-rose   { background: rgba(225,29,72,0.25); }
+    .service-card h3 {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+    .service-card p {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+    .service-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .service-list li {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      padding-left: 1rem;
+      position: relative;
+    }
+    .service-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-size: 0.7rem;
+      top: 0.05rem;
+    }
+    .services-cta {
+      text-align: center;
+      padding: 2.5rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+    }
+    .services-cta h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .services-cta p {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── CONTACT ── */
+    #contact { padding: 6rem 0; background: var(--light); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+    .contact-info p { color: var(--muted); margin-bottom: 2rem; font-size: 0.95rem; }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .contact-item-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--white);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      flex-shrink: 0;
+    }
+    .contact-item-text strong { display: block; font-size: 0.8rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; }
+    .contact-item-text a, .contact-item-text span { font-size: 0.9rem; color: var(--accent); }
+    .contact-form {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+    .contact-form h3 {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.7rem 0.95rem;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--navy);
+      background: var(--white);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-submit {
+      width: 100%;
+      padding: 0.85rem;
+      background: var(--accent);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .form-submit:hover { background: #1d4ed8; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(37,99,235,0.35); }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 1.5rem;
+      color: #16a34a;
+      font-weight: 600;
+      background: #f0fdf4;
+      border-radius: 8px;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+    }
+    footer a { color: rgba(255,255,255,0.7); transition: color 0.2s; }
+    footer a:hover { color: var(--white); }
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .footer-links { display: flex; gap: 1.5rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-image-wrap { max-width: 360px; }
+      .resume-layout { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); padding: 1rem 2rem; gap: 1rem; }
+      .nav-links.open { display: flex; }
+      .nav-hamburger { display: flex; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 1.25rem; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { justify-content: center; }
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-up:nth-child(2) { transition-delay: 0.1s; }
+    .fade-up:nth-child(3) { transition-delay: 0.2s; }
+    .fade-up:nth-child(4) { transition-delay: 0.3s; }
+    .fade-up:nth-child(5) { transition-delay: 0.4s; }
+    .fade-up:nth-child(6) { transition-delay: 0.5s; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ NAVBAR ═══════════════════════════ -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <div class="nav-logo">Stephen<span>Huber</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact" class="nav-cta">Contact Me</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        🏆 &nbsp; Shell Ocean Discovery XPRIZE · $1M NOAA Bonus Prize Winner
+      </div>
+      <h1 class="hero-title">
+        Stephen<br/><span class="highlight">Huber</span>
+      </h1>
+      <p class="hero-subtitle">
+        STEM Education Leader &amp; Director of Innovation empowering K–12 students with
+        real-world experiences in space, ocean science, and robotics.
+      </p>
+      <div class="hero-actions">
+        <a href="#services" class="btn btn-primary">Explore Services</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">10<span>+</span></div>
+          <div class="hero-stat-label">Years of Experience</div>
+        </div>
+        <div>
+          <div class="hero-stat-num"><span>$</span>1M</div>
+          <div class="hero-stat-label">XPRIZE Award Won</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">1</div>
+          <div class="hero-stat-label">Space Patent Held</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">K<span>–</span>12</div>
+          <div class="hero-stat-label">Students Impacted</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ ABOUT ═══════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap fade-up">
+        <div class="about-image-placeholder">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+          </svg>
+        </div>
+        <div class="about-badge-card">
+          <div class="about-badge-icon">🏅</div>
+          <div class="about-badge-text">
+            <strong>Patent Holder</strong>
+            <span>ISS Experiment Platform</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-text fade-up">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">Bringing Extreme STEM to the Classroom</h2>
+        <p>
+          I'm a visionary STEM education leader with over 10 years of experience designing
+          and directing programs that give K–12 students access to cutting-edge science and
+          engineering—from experiments aboard the International Space Station to deep-ocean
+          research deployments.
+        </p>
+        <p>
+          As Director of Innovation at Valley Christian Schools in San Jose, CA, I lead
+          multi-disciplinary engineering teams comprising students, faculty, and industry
+          professionals. I cultivate partnerships with NASA, MBARI, and leading technology
+          companies to create authentic research experiences that go far beyond the textbook.
+        </p>
+        <p>
+          My career spans aerospace, oceanographic research, competition robotics, IoT
+          engineering, and humanitarian work in active conflict zones—giving me a uniquely
+          broad perspective on what it means to build teams that solve real-world problems
+          under pressure.
+        </p>
+        <div class="about-pills">
+          <span class="pill">Space & ISS Programs</span>
+          <span class="pill">Ocean Science</span>
+          <span class="pill">Robotics</span>
+          <span class="pill">XPRIZE Competitions</span>
+          <span class="pill">Makerspaces</span>
+          <span class="pill">Grant Strategy</span>
+          <span class="pill">NASA Partnership</span>
+          <span class="pill">MBARI</span>
+        </div>
+        <div style="margin-top:2rem; display:flex; gap:1rem;">
+          <a href="#resume" class="btn btn-primary">View Full Resume</a>
+          <a href="#contact" class="btn btn-dark">Work With Me</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ RESUME ═══════════════════════════ -->
+<section id="resume">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:3.5rem;">
+      <div class="section-label">Experience</div>
+      <h2 class="section-title">Professional Background</h2>
+      <p class="section-subtitle" style="margin: 0 auto;">
+        A decade of leading innovation at the intersection of education, engineering, and exploration.
+      </p>
+    </div>
+    <div class="resume-layout">
+      <!-- Sidebar -->
+      <div>
+        <div class="resume-card fade-up">
+          <h3>Core Competencies</h3>
+          <ul class="skills-list">
+            <li>STEM Curriculum &amp; Program Design</li>
+            <li>Strategic Partnerships &amp; Grants</li>
+            <li>Cross-Functional Team Leadership</li>
+            <li>Engineering &amp; Prototyping</li>
+            <li>Robotics &amp; Aerospace Systems</li>
+            <li>Budget &amp; Operations Management</li>
+            <li>Stakeholder Engagement</li>
+            <li>Project &amp; Program Management</li>
+            <li>International Operations</li>
+          </ul>
+        </div>
+        <div class="resume-card fade-up">
+          <h3>Education</h3>
+          <div class="edu-item">
+            <div class="edu-degree">B.S. Business Administration &amp; Management</div>
+            <div class="edu-school">LeTourneau University</div>
+            <div class="edu-year">2004 – 2007</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-degree">Mechanical Engineering Studies</div>
+            <div class="edu-school">Cal Poly Pomona</div>
+            <div class="edu-year">2002 – 2004</div>
+          </div>
+        </div>
+        <div class="resume-card fade-up">
+          <h3>Awards &amp; Patents</h3>
+          <div class="award-item">
+            <div class="award-icon">🏆</div>
+            <div class="award-text"><strong>Shell Ocean Discovery XPRIZE</strong> — $1M NOAA Bonus Prize Winner</div>
+          </div>
+          <div class="award-item">
+            <div class="award-icon">🔬</div>
+            <div class="award-text"><strong>Patent:</strong> Configurable Platform for Conducting Experiments in Space</div>
+          </div>
+          <div class="award-item">
+            <div class="award-icon">📜</div>
+            <div class="award-text"><strong>Certification:</strong> GIS on the Web</div>
+          </div>
+        </div>
+      </div>
+      <!-- Timeline -->
+      <div class="fade-up">
+        <div class="timeline">
+          <div class="tl-item current">
+            <div class="tl-dot"></div>
+            <div class="tl-date">July 2023 – Present</div>
+            <div class="tl-title">Director of Innovation – Research &amp; Development</div>
+            <div class="tl-org">Valley Christian Schools · San Jose, CA</div>
+            <ul class="tl-bullets">
+              <li>Lead strategic vision for all innovation &amp; R&D programs across the school system.</li>
+              <li>Direct multi-disciplinary engineering teams—students, faculty, and industry professionals.</li>
+              <li>Cultivate partnerships with NASA, MBARI, and leading technology companies.</li>
+              <li>Manage program budgets, timelines, and deliverables.</li>
+            </ul>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">July 2019 – July 2023</div>
+            <div class="tl-title">Director of Innovation, Research &amp; Development</div>
+            <div class="tl-org">Valley Christian School · San Jose, CA</div>
+            <ul class="tl-bullets">
+              <li>Created and expanded "Extreme STEM" programs in space &amp; ocean research.</li>
+              <li>Led engineering teams in multi-million-dollar international competitions.</li>
+              <li>Developed sustainable business models for long-term program viability.</li>
+            </ul>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Oct 2016 – Present</div>
+            <div class="tl-title">Program Manager / Lead Engineer</div>
+            <div class="tl-org">The Quest Institute · San Jose, CA</div>
+            <ul class="tl-bullets">
+              <li>Manage three concurrent programs: ISS platform, Shell XPRIZE, &amp; MBARI deployment.</li>
+              <li>Architected the flagship hardware platform for ISS student science experiments.</li>
+              <li>Collaborate with aerospace and oceanographic engineers for safety-critical design.</li>
+            </ul>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">July 2018 – July 2019</div>
+            <div class="tl-title">Associate Director of Research &amp; Development</div>
+            <div class="tl-org">Valley Christian School · San Jose, CA</div>
+            <ul class="tl-bullets">
+              <li>Supported launch &amp; growth of innovation programs bridging classroom and engineering.</li>
+              <li>Coordinated with aerospace and ocean science partners on experiment platforms.</li>
+            </ul>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">July 2014 – Dec 2018</div>
+            <div class="tl-title">Founder</div>
+            <div class="tl-org">UpPump Inc. · San Jose, CA</div>
+            <ul class="tl-bullets">
+              <li>Founded social enterprise: IoT remote monitoring for hand-pump wells in developing nations.</li>
+              <li>Designed predictive maintenance systems for uninterrupted clean water access.</li>
+            </ul>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Oct 2012 – Aug 2014</div>
+            <div class="tl-title">Country Director, South Sudan</div>
+            <div class="tl-org">Radler Foundation · Juba, South Sudan</div>
+            <ul class="tl-bullets">
+              <li>Managed water, medical, and leadership programs across East Africa in a conflict zone.</li>
+              <li>Built strategic partnerships with NGOs, donors, and government leaders.</li>
+            </ul>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">May 2008 – Oct 2012</div>
+            <div class="tl-title">Operations Manager / Project Manager</div>
+            <div class="tl-org">Radler Foundation · South Sudan</div>
+            <ul class="tl-bullets">
+              <li>First expatriate to establish clean water drilling operations in the region.</li>
+              <li>Designed and installed the largest solar power system in South Sudan at the time.</li>
+              <li>Successfully registered the organization as an NGO with the South Sudanese government.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:3rem;">
+      <a href="Stephen_Huber_Resume.pdf" download class="btn btn-primary">⬇ Download Full Resume (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ PORTFOLIO ═══════════════════════════ -->
+<section id="portfolio">
+  <div class="container">
+    <div class="section-label">Portfolio</div>
+    <h2 class="section-title">Signature Programs &amp; Projects</h2>
+    <p class="section-subtitle">
+      A selection of landmark initiatives spanning space exploration, ocean science, competition robotics,
+      and humanitarian engineering.
+    </p>
+    <div class="portfolio-grid">
+      <div class="portfolio-card fade-up">
+        <div class="portfolio-thumb portfolio-thumb-space">🚀</div>
+        <div class="portfolio-body">
+          <div class="portfolio-tag">Space · ISS</div>
+          <h3>International Space Station Student Experiment Platform</h3>
+          <p>
+            Architected a patented, configurable hardware platform enabling K–12 students to design
+            and conduct real science experiments aboard the ISS—transforming classrooms into NASA-grade
+            research labs.
+          </p>
+          <div class="portfolio-meta">
+            <span class="portfolio-chip">Patent Holder</span>
+            <span class="portfolio-chip">NASA Partnership</span>
+            <span class="portfolio-chip">K–12</span>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card fade-up">
+        <div class="portfolio-thumb portfolio-thumb-ocean">🌊</div>
+        <div class="portfolio-body">
+          <div class="portfolio-tag">Ocean Science · XPRIZE</div>
+          <h3>Shell Ocean Discovery XPRIZE — $1M NOAA Bonus Prize</h3>
+          <p>
+            Led a student competition team to defeat international professional teams, winning the
+            prestigious $1M NOAA Bonus Prize for autonomous deep-ocean mapping using cutting-edge
+            underwater technology.
+          </p>
+          <div class="portfolio-meta">
+            <span class="portfolio-chip">$1M Award</span>
+            <span class="portfolio-chip">International Competition</span>
+            <span class="portfolio-chip">Student-Led</span>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card fade-up">
+        <div class="portfolio-thumb portfolio-thumb-ocean" style="background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 100%);">🤿</div>
+        <div class="portfolio-body">
+          <div class="portfolio-tag">Ocean Science · MBARI</div>
+          <h3>MBARI Deep-Ocean STEM Deployment</h3>
+          <p>
+            Pioneered a deep-ocean STEM platform deployed on the Monterey Bay Aquarium Research
+            Institute's cabled observatory, giving students unprecedented access to live deep-sea data
+            from the Pacific Ocean floor.
+          </p>
+          <div class="portfolio-meta">
+            <span class="portfolio-chip">MBARI Partnership</span>
+            <span class="portfolio-chip">Cabled Observatory</span>
+            <span class="portfolio-chip">Live Data</span>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card fade-up">
+        <div class="portfolio-thumb portfolio-thumb-robot">🤖</div>
+        <div class="portfolio-body">
+          <div class="portfolio-tag">Robotics · Competition</div>
+          <h3>Advanced Robotics Competition Programs</h3>
+          <p>
+            Built and scaled award-winning K–12 robotics programs spanning design, fabrication, and
+            competition strategy—producing teams that routinely outperform programs from much larger
+            institutions.
+          </p>
+          <div class="portfolio-meta">
+            <span class="portfolio-chip">Competition Strategy</span>
+            <span class="portfolio-chip">Engineering Design</span>
+            <span class="portfolio-chip">Award-Winning</span>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card fade-up">
+        <div class="portfolio-thumb portfolio-thumb-makerspace">🛠️</div>
+        <div class="portfolio-body">
+          <div class="portfolio-tag">Innovation Center · Makerspace</div>
+          <h3>School Innovation Lab — Design &amp; Build-Out</h3>
+          <p>
+            Designed, equipped, and launched a full-scale school innovation center and makerspace—
+            selecting tools, developing safety protocols, training staff, and creating the curriculum
+            framework that brings it to life.
+          </p>
+          <div class="portfolio-meta">
+            <span class="portfolio-chip">Space Planning</span>
+            <span class="portfolio-chip">Equipment Spec</span>
+            <span class="portfolio-chip">Staff Training</span>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card fade-up">
+        <div class="portfolio-thumb portfolio-thumb-iot">💧</div>
+        <div class="portfolio-body">
+          <div class="portfolio-tag">IoT · Social Enterprise</div>
+          <h3>UpPump — Remote Well Monitoring System</h3>
+          <p>
+            Founded UpPump Inc. to develop IoT-enabled predictive maintenance for hand-pump water
+            wells in Sub-Saharan Africa, ensuring uninterrupted clean water access for underserved
+            communities.
+          </p>
+          <div class="portfolio-meta">
+            <span class="portfolio-chip">Founder</span>
+            <span class="portfolio-chip">IoT / Hardware</span>
+            <span class="portfolio-chip">Impact Engineering</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ SERVICES ═══════════════════════════ -->
+<section id="services">
+  <div class="container">
+    <div class="section-label">Consulting Services</div>
+    <h2 class="section-title">How I Can Help Your School</h2>
+    <p class="section-subtitle">
+      I partner with K–12 schools, districts, and educational organizations to design, launch, and
+      sustain programs that give students genuinely world-class STEM experiences.
+    </p>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon si-blue">🚀</div>
+        <h3>Space Program Development</h3>
+        <p>
+          Design and launch student-driven space science programs—from experiment design to
+          real deployment on the International Space Station.
+        </p>
+        <ul class="service-list">
+          <li>ISS experiment platform design &amp; integration</li>
+          <li>NASA partnership navigation</li>
+          <li>Student research curriculum</li>
+          <li>Flight hardware safety compliance</li>
+        </ul>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon si-teal">🌊</div>
+        <h3>Ocean Science Programs</h3>
+        <p>
+          Build ocean research programs connecting students with real-world marine science
+          through partnerships, ROVs, and live ocean data systems.
+        </p>
+        <ul class="service-list">
+          <li>MBARI &amp; oceanographic partnerships</li>
+          <li>Underwater ROV programs</li>
+          <li>Deep-ocean data curriculum</li>
+          <li>XPRIZE competition coaching</li>
+        </ul>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon si-rose">🤖</div>
+        <h3>Robotics &amp; Competition Coaching</h3>
+        <p>
+          Stand up or strengthen your robotics program with competition-proven strategy,
+          engineering mentorship, and team culture development.
+        </p>
+        <ul class="service-list">
+          <li>Competition program build-out</li>
+          <li>Design &amp; fabrication mentorship</li>
+          <li>Season strategy &amp; scouting</li>
+          <li>Coach &amp; mentor training</li>
+        </ul>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon si-gold">🏆</div>
+        <h3>XPRIZE &amp; STEM Competition Strategy</h3>
+        <p>
+          Leverage first-hand experience winning a $1M international XPRIZE to help your
+          team compete—and win—at the highest levels.
+        </p>
+        <ul class="service-list">
+          <li>Team formation &amp; readiness assessment</li>
+          <li>Technical proposal writing</li>
+          <li>Competition engineering roadmap</li>
+          <li>Fundraising &amp; sponsor outreach</li>
+        </ul>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon si-green">🛠️</div>
+        <h3>Innovation Center &amp; Makerspace Consulting</h3>
+        <p>
+          Plan, design, and launch a world-class makerspace or innovation lab—from
+          initial concept through grand opening and ongoing programming.
+        </p>
+        <ul class="service-list">
+          <li>Space planning &amp; layout design</li>
+          <li>Equipment selection &amp; procurement</li>
+          <li>Safety protocols &amp; staff training</li>
+          <li>Curriculum &amp; program framework</li>
+        </ul>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon si-purple">📋</div>
+        <h3>STEM Program Strategy &amp; Grant Support</h3>
+        <p>
+          Build the strategic foundation—vision, partnerships, funding models, and metrics—
+          that make STEM programs sustainable for years to come.
+        </p>
+        <ul class="service-list">
+          <li>Program vision &amp; roadmap development</li>
+          <li>Industry partnership strategy</li>
+          <li>Grant identification &amp; writing support</li>
+          <li>Revenue model &amp; sustainability planning</li>
+        </ul>
+      </div>
+    </div>
+    <div class="services-cta fade-up">
+      <h3>Ready to build something extraordinary?</h3>
+      <p>Whether you're starting from scratch or scaling what you have, let's talk about what's possible for your students.</p>
+      <a href="#contact" class="btn btn-primary" style="font-size:1rem; padding:0.85rem 2rem;">Schedule a Consultation</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ CONTACT ═══════════════════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Let's Connect</h2>
+    <p class="section-subtitle">
+      Have a program challenge to solve? Interested in consulting? I'd love to hear about
+      your school's vision and explore how we might work together.
+    </p>
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <h3>Get in Touch</h3>
+        <p>
+          I work with schools, districts, and educational organizations across the country.
+          Reach out to discuss your needs — no obligation, just a conversation.
+        </p>
+        <div class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <div class="contact-item-text">
+            <strong>Email</strong>
+            <a href="mailto:stephen.rffsudan@gmail.com">stephen.rffsudan@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div class="contact-item-text">
+            <strong>Location</strong>
+            <span>San Jose, CA (Available Nationwide)</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">💼</div>
+          <div class="contact-item-text">
+            <strong>LinkedIn</strong>
+            <a href="https://linkedin.com/in/huberstephen" target="_blank" rel="noopener">linkedin.com/in/huberstephen</a>
+          </div>
+        </div>
+        <div style="margin-top:2rem; padding:1.5rem; background:var(--white); border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.05);">
+          <div style="font-size:0.8rem; font-weight:700; color:var(--navy); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.75rem;">Typical Engagement Types</div>
+          <ul style="list-style:none; font-size:0.875rem; color:var(--muted); display:flex; flex-direction:column; gap:0.4rem;">
+            <li>✓ &nbsp; Program Assessment &amp; Strategy Sessions</li>
+            <li>✓ &nbsp; Workshop / Professional Development Days</li>
+            <li>✓ &nbsp; Multi-Month Launch Engagements</li>
+            <li>✓ &nbsp; Ongoing Advisory Retainers</li>
+            <li>✓ &nbsp; Speaking Engagements &amp; Keynotes</li>
+          </ul>
+        </div>
+      </div>
+      <div class="contact-form fade-up">
+        <h3>Send a Message</h3>
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="fname" placeholder="Jane" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lname" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="jane@school.edu" required />
+          </div>
+          <div class="form-group">
+            <label for="org">School / Organization</label>
+            <input type="text" id="org" name="org" placeholder="Lincoln Middle School" />
+          </div>
+          <div class="form-group">
+            <label for="service">Area of Interest</label>
+            <select id="service" name="service">
+              <option value="">— Select a service —</option>
+              <option>Space Program Development</option>
+              <option>Ocean Science Programs</option>
+              <option>Robotics &amp; Competition Coaching</option>
+              <option>XPRIZE / STEM Competition Strategy</option>
+              <option>Innovation Center &amp; Makerspace</option>
+              <option>STEM Program Strategy &amp; Grants</option>
+              <option>Speaking Engagement</option>
+              <option>Other / General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me about your school's goals and how I can help…" required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message →</button>
+          <div class="form-success" id="formSuccess">
+            ✅ &nbsp; Thanks for reaching out! I'll be in touch within 1–2 business days.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div style="font-family:'Playfair Display',serif; font-size:1.1rem; color:rgba(255,255,255,0.8); font-weight:700;">
+      Stephen Huber
+    </div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#resume">Resume</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div>
+      &copy; <span id="year"></span> Stephen Huber &mdash; STEM Education Leader &amp; Innovation Consultant
+      &nbsp;|&nbsp; San Jose, CA
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════ SCRIPTS ═══════════════════════════ -->
+<script>
+  /* ── Year ── */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ── Navbar scroll effect ── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  /* ── Mobile nav toggle ── */
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  // Close nav on link click
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+
+  /* ── Scroll animations ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  /* ── Contact form (mailto fallback — replace with Formspree/Netlify for production) ── */
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const fname   = form.fname.value;
+    const lname   = form.lname.value;
+    const email   = form.email.value;
+    const org     = form.org.value;
+    const service = form.service.value;
+    const message = form.message.value;
+
+    const subject = encodeURIComponent(`Portfolio Inquiry from ${fname} ${lname}`);
+    const body    = encodeURIComponent(
+      `Name: ${fname} ${lname}\nEmail: ${email}\nOrganization: ${org}\nService Interest: ${service}\n\nMessage:\n${message}`
+    );
+    window.location.href = `mailto:stephen.rffsudan@gmail.com?subject=${subject}&body=${body}`;
+
+    document.getElementById('formSuccess').style.display = 'block';
+    form.reset();
+  }
+</script>
+</body>
+</html>
